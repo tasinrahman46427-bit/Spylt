@@ -456,3 +456,53 @@ const RESUME_LOCATION = {
     },
   ],
 };
+
+const TRASH_LOCATION = {
+  id: 4,
+  type: "trash",
+  name: "Trash",
+  icon: "/icons/trash.svg",
+  kind: "folder",
+  children: [
+    {
+      id: 1,
+      name: "trash1.png",
+      icon: "/images/image.png",
+      kind: "file",
+      fileType: "img",
+      position: "top-10 left-10",
+      imageUrl: "/images/trash-1.png",
+    },
+    {
+      id: 2,
+      name: "trash2.png",
+      icon: "/images/image.png",
+      kind: "file",
+      fileType: "img",
+      position: "top-40 left-80",
+      imageUrl: "/images/trash-2.png",
+    },
+  ],
+};
+
+export const locations = {
+  work: WORK_LOCATION,
+  about: ABOUT_LOCATION,
+  resume: RESUME_LOCATION,
+  trash: TRASH_LOCATION,
+};
+
+const INITIAL_Z_INDEX = 1000;
+
+const WINDOW_CONFIG = {
+  finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+};
+
+export { INITIAL_Z_INDEX, WINDOW_CONFIG };
