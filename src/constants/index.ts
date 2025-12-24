@@ -204,7 +204,6 @@ const gallery = [
   },
 ];
 
-
 export {
   navLinks,
   navIcons,
@@ -215,7 +214,6 @@ export {
   photosLinks,
   gallery,
 };
-
 
 const WORK_LOCATION = {
   id: 1,
@@ -384,7 +382,7 @@ const WORK_LOCATION = {
     },
   ],
 };
- 
+
 const ABOUT_LOCATION = {
   id: 2,
   type: "about",
