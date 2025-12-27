@@ -1,3 +1,9 @@
+import NavBar from "@/components/NavBar";
+
 export default function Home() {
-  return <main className="text-green-700">hello</main>;
+  return (
+    <main>
+      <NavBar />
+    </main>
+  );
 }
