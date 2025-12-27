@@ -1,6 +1,51 @@
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "@/libs/gsap";
+import { SplitText } from "gsap/all";
 import Image from "next/image";
 
 export default function Hero() {
+  useGSAP(() => {
+    const titleSplit = SplitText.create(".hero-title", {
+      type: "chars",
+    });
+
+    const tl = gsap.timeline({
+      delay: 1,
+    });
+    tl.to(".hero-content", {
+      opacity: 1,
+      y: 0,
+      ease: "power1.inOut",
+    })
+      .to(
+        ".hero-text-scroll",
+        {
+          duration: 1,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "circ.out",
+        },
+        "-=0.5"
+      )
+      .from(
+        titleSplit.chars,
+        {
+          yPercent: 200,
+          stagger: 0.02,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      );
+
+    const heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-container",
+        start: "10% top",
+        markers: true,
+      },
+    });
+  });
   return (
     <section className="bg-main-bg">
       <div className="hero-container">
