@@ -8,6 +8,7 @@ export default function Home() {
       <NavBar />
       <Hero />
       <MessageSection />
+      <div className="bg-black h-screen w-screen"></div>
     </main>
   );
 }
