@@ -4,33 +4,78 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/libs/gsap";
 import Image from "next/image";
 import { useRef } from "react";
+import { useBreakpoint } from "@/hooks/userBreakpoint";
 
 export default function FlavorSlider() {
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
+  const { isMd, isLg, isXl } = useBreakpoint();
+
   useGSAP(() => {
     if (!sliderRef.current) return;
+    if (!isMd && !isLg && !isXl) return;
 
     const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+
+    const isLgEnd =
+      isLg || isXl
+        ? `+=${scrollAmount + 1500}px`
+        : `+=${scrollAmount - 1800}px`;
+    const isItLg =
+      isLg || isXl
+        ? `-=${scrollAmount + 1500}px`
+        : `-=${scrollAmount - 1800}px`;
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: " .flavor-section",
-        start: "2% top",
-        end: `+=${scrollAmount + 500}px`,
+        start: "20% top",
+        end: isLgEnd,
         scrub: true,
         pin: true,
-        markers: true,
       },
     });
 
     tl.to(".flavor-section", {
-      x: `-${scrollAmount + 1500}px`,
+      x: isItLg,
     });
-  });
+
+    if (isXl) {
+      const titleTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: "10% top",
+          end: "bottom 80%",
+          scrub: true,
+        },
+      });
+
+      titleTl
+        .to(".first-text-split", {
+          xPercent: -30,
+          ease: "power1.inOut",
+        })
+        .to(
+          ".flavor-text-scroll",
+          {
+            xPercent: -22,
+            ease: "power1.inOut",
+          },
+          "<"
+        )
+        .to(
+          ".second-text-split",
+          {
+            xPercent: -10,
+            ease: "power1.inOut",
+          },
+          "<"
+        );
+    }
+  }, [isMd, isLg, isXl]);
   return (
     <div ref={sliderRef} className="slider-wrapper">
-      <div className="flavors">
+      <div className="flavors md:translate-x-[255vw] lg:translate-x-0 mt-30">
         {flavorlists.map(flavor => (
           <div
             key={flavor.name}
