@@ -1,12 +1,58 @@
 "use client";
 import { nutrientLists } from "@/constants";
 import { useBreakpoint } from "@/hooks/userBreakpoint";
+import { gsap } from "@/libs/gsap";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/all";
 import Image from "next/image";
 
 export default function NutritionSection() {
   const { isMobile } = useBreakpoint();
 
   const list = isMobile ? nutrientLists.slice(0, 3) : nutrientLists;
+
+  useGSAP(() => {
+    const titleSplit = SplitText.create(".nutrition-title", {
+      type: "chars",
+    });
+    const paragraphSplit = SplitText.create(".nutrition-section p", {
+      type: "words, lines",
+      linesClass: "paragraph-line",
+    });
+
+    gsap.from(titleSplit.chars, {
+      yPercent: 400,
+      stagger: 0.02,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".nutrition-section",
+        start: "top 50%",
+        toggleActions: "play  play reverse",
+      },
+    });
+
+    gsap.from(paragraphSplit.words, {
+      yPercent: 400,
+      stagger: 0.02,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".nutrition-section",
+        start: "top 40%",
+        toggleActions: "play  play reverse",
+      },
+    });
+
+    gsap.from(".nutrition-text-scroll", {
+      clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+      opacity: 0,
+      duration: 0.5,
+      scrollTrigger: {
+        trigger: ".nutrition-section",
+        start: "top 45%",
+        toggleActions: "play  play reverse",
+      },
+    });
+  });
 
   return (
     <section className="nutrition-section">
@@ -33,14 +79,12 @@ export default function NutritionSection() {
               <h1 className="nutrition-title">It still does</h1>
             </div>
             <div
-              style={
-                {
-                  // clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-                }
-              }
+              style={{
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+              }}
               className="nutrition-text-scroll place-self-start"
             >
-              <div className="bg-yellow-brown pb-5 md:pt-0 pt-3 md:px-5 px-3">
+              <div className="bg-yellow-brown pb-3 md:pt-0 pt-3 md:px-5 px-3">
                 <h2 className="text-milk-yellow">Body Good</h2>
               </div>
             </div>
