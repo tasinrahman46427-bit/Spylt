@@ -72,7 +72,7 @@ export default function FlavorSlider() {
           "<"
         );
     }
-  }, [isMd, isLg, isXl]);
+  });
   return (
     <div ref={sliderRef} className="slider-wrapper">
       <div className="flavors md:translate-x-[255vw] lg:translate-x-0 mt-30">

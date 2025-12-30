@@ -5,6 +5,7 @@ import MessageSection from "@/app/(root)/MessageSection";
 import NavBar from "@/components/NavBar";
 import { ScrollSmoother } from "@/libs/gsap";
 import { useEffect } from "react";
+import NutritionSection from "./NutritionSection";
 
 export default function Home() {
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function Home() {
           <Hero />
           <MessageSection />
           <FlavorSection />
+          <NutritionSection />
           <div className="h-screen w-screen bg-black"></div>
         </div>
       </div>
