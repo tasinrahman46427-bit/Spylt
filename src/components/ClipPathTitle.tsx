@@ -30,9 +30,7 @@ export default function ClipPathTitle({
         trigger: ".benefit-section",
         start: `${aniStart}% 90%`,
         end: `${aniStart + 10}% 90%`,
-        markers: true,
-        // toggleActions: "play  play reverse",
-        scrub: 1.5,
+        scrub: 0.5,
       },
     });
   });

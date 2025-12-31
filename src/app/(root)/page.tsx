@@ -25,7 +25,7 @@ export default function Home() {
           <FlavorSection />
           <NutritionSection />
           <BenefitSection />
-          <div className="h-screen w-screen bg-black"></div>
+          <div className="h-screen w-screen bg-black/90"></div>
         </div>
       </div>
     </main>

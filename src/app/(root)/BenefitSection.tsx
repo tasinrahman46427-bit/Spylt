@@ -1,10 +1,10 @@
-"use client";
 import ClipPathTitle from "@/components/ClipPathTitle";
+import VideoPinCompo from "@/components/VideoPinCompo";
 import { useBreakpoint } from "@/hooks/userBreakpoint";
 
 export default function BenefitSection() {
   const { isMobile } = useBreakpoint();
-  const pul = isMobile ? 0 : 10;
+  const pul = isMobile ? 2 : 7;
   return (
     <section className="benefit-section">
       <div className="container mx-auto pt-20">
@@ -20,7 +20,7 @@ export default function BenefitSection() {
               bg={"#c88e64"}
               className={"first-title"}
               borderColor={"#222123"}
-              aniStart={40 + pul}
+              aniStart={10 + pul}
             />
             <ClipPathTitle
               title={"Protein + Caffeine"}
@@ -28,7 +28,7 @@ export default function BenefitSection() {
               bg={"#faeade"}
               className={"second-title"}
               borderColor={"#222123"}
-              aniStart={50 + pul}
+              aniStart={17 + pul}
             />
             <ClipPathTitle
               title={"Infinitely recyclable"}
@@ -36,7 +36,7 @@ export default function BenefitSection() {
               bg={"#7F3B2D"}
               className={"third-title"}
               borderColor={"#222123"}
-              aniStart={60 + pul}
+              aniStart={24 + pul}
             />
             <ClipPathTitle
               title={"Lactose free"}
@@ -44,13 +44,17 @@ export default function BenefitSection() {
               bg={"#FED775"}
               className={"fourth-title"}
               borderColor={"#222123"}
-              aniStart={70 + pul}
+              aniStart={31 + pul}
             />
           </div>
           <div className="md:mt-0 mt-10">
             <p>And much more ...</p>
           </div>
         </div>
+      </div>
+
+      <div className="relative overlay-box">
+        <VideoPinCompo />
       </div>
     </section>
   );
