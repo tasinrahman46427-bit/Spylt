@@ -7,7 +7,6 @@ import Image from "next/image";
 export default function VideoPinCompo() {
   const { isMobile } = useBreakpoint();
   useGSAP(() => {
-    if (isMobile) return;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".vd-pin-section",
@@ -18,10 +17,20 @@ export default function VideoPinCompo() {
       },
     });
 
-    tl.to(".video-box", {
-      clipPath: "circle(100% at 50% 50%)",
-      ease: "power1.inOut",
-    });
+    if (!isMobile) {
+      tl.to(".video-box", {
+        duration: 5,
+        clipPath: "circle(100% at 50% 50%)",
+        ease: "power1.inOut",
+      });
+    }
+
+    tl.to(
+      {},
+      {
+        duration: 10,
+      }
+    );
   });
   return (
     <div className="vd-pin-section">

@@ -7,6 +7,7 @@ import { ScrollSmoother } from "@/libs/gsap";
 import { useEffect } from "react";
 import NutritionSection from "./NutritionSection";
 import BenefitSection from "./BenefitSection";
+import TestimonialSection from "./TestimonialSection";
 
 export default function Home() {
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function Home() {
           <FlavorSection />
           <NutritionSection />
           <BenefitSection />
-          <div className="h-screen w-screen bg-black/90"></div>
+          <TestimonialSection />
         </div>
       </div>
     </main>
