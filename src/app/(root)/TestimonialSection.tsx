@@ -21,6 +21,33 @@ export default function TestimonialSection() {
       },
       marginTop: "-190vh",
     });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".testimonials-section",
+        start: "top bottom",
+        end: "200% top",
+        scrub: true,
+      },
+    });
+
+    tl.to(".testimonials-section .first-title", {
+      xPercent: 70,
+    })
+      .to(
+        ".testimonials-section .second-title",
+        {
+          xPercent: 25,
+        },
+        "<"
+      )
+      .to(
+        ".testimonials-section .third-title",
+        {
+          xPercent: -50,
+        },
+        "<"
+      );
   });
 
   const handlePlay = (index: number) => {
@@ -33,7 +60,7 @@ export default function TestimonialSection() {
     video.pause();
   };
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section ">
       <div className="absolute size-full flex flex-col items-center pt-[5vw]">
         <h1 className="text-black first-title"> What&apos;s </h1>
         <h1 className="text-light-brown second-title"> Everyone </h1>
