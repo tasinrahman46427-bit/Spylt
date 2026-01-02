@@ -27,6 +27,7 @@ export default function Home() {
           <NutritionSection />
           <BenefitSection />
           <TestimonialSection />
+          <div className="h-screen w-screen bg-blue-300 "></div>
         </div>
       </div>
     </main>

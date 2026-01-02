@@ -25,12 +25,9 @@ export default function VideoPinCompo() {
       });
     }
 
-    tl.to(
-      {},
-      {
-        duration: 10,
-      }
-    );
+    tl.to(".video-box", {
+      duration: 10,
+    });
   });
   return (
     <div className="vd-pin-section">

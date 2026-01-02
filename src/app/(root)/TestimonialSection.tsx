@@ -12,6 +12,8 @@ export default function TestimonialSection() {
 
   const startPoint = isMobile ? 0 : 200;
 
+  const cardTlStartPoint = isMobile ? "20% bottom" : "-10% bottom";
+
   useGSAP(() => {
     gsap.to(".testimonials-section", {
       scrollTrigger: {
@@ -48,6 +50,23 @@ export default function TestimonialSection() {
         },
         "<"
       );
+
+    const pinTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".testimonials-section",
+        start: cardTlStartPoint,
+        end: " +=300px",
+        scrub: 1.5,
+        pin: true,
+        markers: true,
+      },
+    });
+
+    pinTl.from(".vd-card", {
+      yPercent: 150,
+      stagger: 0.2,
+      ease: "power1.inOut",
+    });
   });
 
   const handlePlay = (index: number) => {
@@ -67,7 +86,7 @@ export default function TestimonialSection() {
         <h1 className="text-black third-title"> Talking </h1>
       </div>
 
-      <div className="pin-box">
+      <div className="pin-box h-full top-1">
         {cards.map((card, index) => (
           <div
             key={index}
