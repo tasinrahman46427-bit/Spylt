@@ -4,8 +4,11 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/libs/gsap";
 import { SplitText } from "gsap/all";
 import Image from "next/image";
+import { useBreakpoint } from "@/hooks/userBreakpoint";
 
 export default function Hero() {
+  const { isMobile, isTablet } = useBreakpoint();
+
   useGSAP(() => {
     const titleSplit = SplitText.create(".hero-title", {
       type: "chars",
@@ -57,14 +60,35 @@ export default function Hero() {
   return (
     <section className="bg-main-bg">
       <div className="hero-container">
-        <Image
-          src={"/images/hero-img.png"}
-          alt="hero-image"
-          height={1000}
-          width={1000}
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto scale-100 md:scale-150 w-120"
-        />
-        <div className="hero-content">
+        {isTablet ? (
+          <>
+            {isMobile && (
+              <Image
+                src={"/images/hero-bg.png"}
+                alt="hero-image"
+                height={1000}
+                width={1000}
+                className="absolute bottom-50 left-1/2 -translate-x-1/2 object-auto scale-200 md:scale-300 w-120"
+              />
+            )}
+            <Image
+              src={"/images/hero-img.png"}
+              alt="hero-image"
+              height={1000}
+              width={1000}
+              className="absolute top-110 md:top-130 left-1/2 -translate-x-1/2 object-auto scale-100 md:scale-150 w-120"
+            />
+          </>
+        ) : (
+          <video
+            src={"videos/hero-bg.mp4"}
+            autoPlay
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        <div className="hero-content opacity-0">
           <div className="overflow-hidden">
             <h1 className="hero-title">Freaking Delicious</h1>
           </div>
