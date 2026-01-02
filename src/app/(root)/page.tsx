@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import NutritionSection from "./NutritionSection";
 import BenefitSection from "./BenefitSection";
 import TestimonialSection from "./TestimonialSection";
+import FooterSection from "./FooterSection";
 
 export default function Home() {
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function Home() {
           <NutritionSection />
           <BenefitSection />
           <TestimonialSection />
-          <div className="h-screen w-screen bg-blue-300 "></div>
+          <FooterSection />
         </div>
       </div>
     </main>

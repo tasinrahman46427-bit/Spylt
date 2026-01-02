@@ -58,7 +58,6 @@ export default function TestimonialSection() {
         end: " +=300px",
         scrub: 1.5,
         pin: true,
-        markers: true,
       },
     });
 
