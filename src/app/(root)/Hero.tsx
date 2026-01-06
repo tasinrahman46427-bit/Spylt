@@ -106,7 +106,7 @@ export default function Hero() {
             Live life to the fullest with SPYLT: Shatter boredom and embrace
             your inner kid with every deliciously smooth chug.
           </h2>
-          <div className="hero-button">
+          <div className="hero-button cursor-pointer">
             <p>chug a spylt</p>
           </div>
         </div>
